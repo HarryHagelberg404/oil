@@ -114,10 +114,9 @@ def latest_closing_price(entries):
 
 def create_html_report(prices):
     m_currency = mean_currency(prices)
-    f_m_currency = f"{m_currency:.5f}"
+    f_m_currency = f"{m_currency:.4f}"
     m_price = mean_price(prices)
     latest = f"{latest_closing_price(prices):.2f}"
-    print(latest)
     variable_price = int(m_price * m_currency)
 
     first_date_str = prices[0].get("date")
@@ -148,12 +147,22 @@ def create_html_report(prices):
     """
 
     for entry in prices:
+        f_accumulated_price = entry['accumulated_mean_price']
+        f_price = entry['price']
+        f_exchange_rate = entry['exchange_rate']
+        if entry['accumulated_mean_price'] is not None:
+            f_accumulated_price = f"{entry['accumulated_mean_price']:.3f}"
+        else:
+            f_accumulated_price = "   "
+            f_price = "   "
+            f_exchange_rate = "   "
+
         html += f"""
             <tr>
                 <td>{entry['date']}</td>
-                <td>{entry['accumulated_mean_price']}
-                <td>{entry['price']} USD</td>
-                <td>{entry['exchange_rate']} SEK/USD</td>
+                <td>{f_accumulated_price}</td>
+                <td>{f_price}</td>
+                <td>{f_exchange_rate}</td>
             </tr>
         """
 

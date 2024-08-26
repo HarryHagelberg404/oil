@@ -1,135 +1,57 @@
 [
     {
-        "date": "2024-07-15",
-        "price": 489.75,
-        "exchange_rate": 10.57807,
-        "accumulated_mean_price": 489.75
+        "date": "2024-08-15",
+        "price": 448.906,
+        "exchange_rate": 10.45636,
+        "accumulated_mean_price": 448.906
     },
     {
-        "date": "2024-07-16",
-        "price": 483.0,
-        "exchange_rate": 10.59851,
-        "accumulated_mean_price": 486.375
+        "date": "2024-08-16",
+        "price": 446.819,
+        "exchange_rate": 10.49982,
+        "accumulated_mean_price": 447.8625
     },
     {
-        "date": "2024-07-17",
-        "price": 479.25,
-        "exchange_rate": 10.52543,
-        "accumulated_mean_price": 484.0
+        "date": "2024-08-17",
+        "price": null,
+        "exchange_rate": null,
+        "accumulated_mean_price": null
     },
     {
-        "date": "2024-07-18",
-        "price": 475.0,
-        "exchange_rate": 10.55242,
-        "accumulated_mean_price": 481.75
+        "date": "2024-08-18",
+        "price": null,
+        "exchange_rate": null,
+        "accumulated_mean_price": null
     },
     {
-        "date": "2024-07-19",
-        "price": 473.25,
-        "exchange_rate": 10.66116,
-        "accumulated_mean_price": 480.05
+        "date": "2024-08-19",
+        "price": 444.112,
+        "exchange_rate": 10.40404,
+        "accumulated_mean_price": 446.6123333333333
     },
     {
-        "date": "2024-07-22",
-        "price": 457.75,
-        "exchange_rate": 10.68102,
-        "accumulated_mean_price": 476.3333333333333
+        "date": "2024-08-20",
+        "price": 441.533,
+        "exchange_rate": 10.26931,
+        "accumulated_mean_price": 445.3425
     },
     {
-        "date": "2024-07-23",
-        "price": 455.0,
-        "exchange_rate": 10.74908,
-        "accumulated_mean_price": 473.2857142857143
+        "date": "2024-08-21",
+        "price": 439.345,
+        "exchange_rate": 10.2357,
+        "accumulated_mean_price": 444.14300000000003
     },
     {
-        "date": "2024-07-24",
-        "price": 459.25,
-        "exchange_rate": 10.77388,
-        "accumulated_mean_price": 471.53125
-    },
-    {
-        "date": "2024-07-25",
-        "price": 457.5,
-        "exchange_rate": 10.85061,
-        "accumulated_mean_price": 469.97222222222223
-    },
-    {
-        "date": "2024-07-26",
-        "price": 451.25,
-        "exchange_rate": 10.80341,
-        "accumulated_mean_price": 468.1
-    },
-    {
-        "date": "2024-07-29",
-        "price": 452.25,
-        "exchange_rate": 10.84081,
-        "accumulated_mean_price": 466.65909090909093
-    },
-    {
-        "date": "2024-07-30",
-        "price": 446.0,
-        "exchange_rate": 10.79638,
-        "accumulated_mean_price": 464.9375
-    },
-    {
-        "date": "2024-07-31",
-        "price": 458.0,
-        "exchange_rate": 10.72451,
-        "accumulated_mean_price": 464.40384615384613
-    },
-    {
-        "date": "2024-08-01",
-        "price": 450.25,
-        "exchange_rate": 10.6794,
-        "accumulated_mean_price": 463.39285714285717
-    },
-    {
-        "date": "2024-08-02",
-        "price": 427.0,
-        "exchange_rate": 10.69156,
-        "accumulated_mean_price": 460.96666666666664
-    },
-    {
-        "date": "2024-08-05",
-        "price": 425.25,
-        "exchange_rate": 10.51796,
-        "accumulated_mean_price": 458.734375
-    },
-    {
-        "date": "2024-08-06",
-        "price": 424.25,
-        "exchange_rate": 10.59001,
-        "accumulated_mean_price": 456.70588235294116
-    },
-    {
-        "date": "2024-08-07",
-        "price": 438.5,
-        "exchange_rate": 10.45916,
-        "accumulated_mean_price": 455.69444444444446
-    },
-    {
-        "date": "2024-08-08",
-        "price": 438.75,
-        "exchange_rate": 10.51738,
-        "accumulated_mean_price": 454.80263157894734
-    },
-    {
-        "date": "2024-08-09",
-        "price": 444.75,
-        "exchange_rate": 10.52991,
-        "accumulated_mean_price": 454.3
-    },
-    {
-        "date": "2024-08-14",
-        "price": 455.5,
-        "exchange_rate": 10.42227,
-        "accumulated_mean_price": 454.35714285714283
+        "date": "2024-08-22",
+        "price": 441.476,
+        "exchange_rate": 10.2308,
+        "accumulated_mean_price": 443.6985
     },
     {
         "date": "2024-08-23",
         "price": 441.476,
         "exchange_rate": 10.24,
-        "accumulated_mean_price": 453.7716363636364
+        "accumulated_mean_price": 443.38100000000003
     },
     {
         "date": "2024-08-24",
@@ -147,6 +69,6 @@
         "date": "2024-08-26",
         "price": 443.548,
         "exchange_rate": 10.2828,
-        "accumulated_mean_price": 453.32713043478265
+        "accumulated_mean_price": 443.401875
     }
 ]
