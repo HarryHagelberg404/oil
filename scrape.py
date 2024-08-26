@@ -98,8 +98,8 @@ def main():
     with open("latest_oil_price.html", "r", encoding="utf-8") as file:
         html_content = file.read()
 
-    price = ""
-    exchange_rate = ""
+    price = None
+    exchange_rate = None
     if is_swedish_bank_day():
         price = extract_price_from_html(html_content)
         exchange_rate = get_usd_to_sek_exchange_rate()
@@ -107,6 +107,3 @@ def main():
     store_price_in_json(price, exchange_rate)
 
     print(f"Price {price} USD stored successfully.")
-
-
-main()
