@@ -133,7 +133,7 @@ def create_html_report(prices):
         <h2>Olje- och valutanoteringar {year}</h2>
         <h3>{first_date_formatted}- {last_date_formatted} {year}</h3>
         <br>
-        <h3>Medelvärde USD:                             {f_m_currency} SEK/USD</h3>
+        <h3>Medelvärde USD                              {f_m_currency} SEK/USD</h3>
         <h3>Platts HSFO 3,5 % FOB Rotterdam Barges      {latest} USD/MT</h3>
         <h3>Prisvariabel                                {variable_price} SEK/MT</h3>
         <br>
