@@ -1,0 +1,127 @@
+[
+    {
+        "date": "2024-07-15",
+        "price": 489.75,
+        "exchange_rate": 10.57807
+    },
+    {
+        "date": "2024-07-16",
+        "price": 483.0,
+        "exchange_rate": 10.59851
+    },
+    {
+        "date": "2024-07-17",
+        "price": 479.25,
+        "exchange_rate": 10.52543
+    },
+    {
+        "date": "2024-07-18",
+        "price": 475.0,
+        "exchange_rate": 10.55242
+    },
+    {
+        "date": "2024-07-19",
+        "price": 473.25,
+        "exchange_rate": 10.66116
+    },
+    {
+        "date": "2024-07-22",
+        "price": 457.75,
+        "exchange_rate": 10.68102
+    },
+    {
+        "date": "2024-07-23",
+        "price": 455.0,
+        "exchange_rate": 10.74908
+    },
+    {
+        "date": "2024-07-24",
+        "price": 459.25,
+        "exchange_rate": 10.77388
+    },
+    {
+        "date": "2024-07-25",
+        "price": 457.5,
+        "exchange_rate": 10.85061
+    },
+    {
+        "date": "2024-07-26",
+        "price": 451.25,
+        "exchange_rate": 10.80341
+    },
+    {
+        "date": "2024-07-29",
+        "price": 452.25,
+        "exchange_rate": 10.84081
+    },
+    {
+        "date": "2024-07-30",
+        "price": 446.0,
+        "exchange_rate": 10.79638
+    },
+    {
+        "date": "2024-07-31",
+        "price": 458.0,
+        "exchange_rate": 10.72451
+    },
+    {
+        "date": "2024-08-01",
+        "price": 450.25,
+        "exchange_rate": 10.6794
+    },
+    {
+        "date": "2024-08-02",
+        "price": 427.0,
+        "exchange_rate": 10.69156
+    },
+    {
+        "date": "2024-08-05",
+        "price": 425.25,
+        "exchange_rate": 10.51796
+    },
+    {
+        "date": "2024-08-06",
+        "price": 424.25,
+        "exchange_rate": 10.59001
+    },
+    {
+        "date": "2024-08-07",
+        "price": 438.5,
+        "exchange_rate": 10.45916
+    },
+    {
+        "date": "2024-08-08",
+        "price": 438.75,
+        "exchange_rate": 10.51738
+    },
+    {
+        "date": "2024-08-09",
+        "price": 444.75,
+        "exchange_rate": 10.52991
+    },
+    {
+        "date": "2024-08-14",
+        "price": 455.5,
+        "exchange_rate": 10.42227
+    },
+    {
+        "date": "2024-08-23",
+        "price": 441.476,
+        "exchange_rate": 10.24
+    },
+    {
+        "date": "2024-08-24",
+        "price": "",
+        "exchange_rate": ""
+    },
+    {
+        "date": "2024-08-25",
+        "price": "",
+        "exchange_rate": ""
+    },
+    {
+        "date": "2024-08-26",
+        "price": 443.548,
+        "exchange_rate": 10.2828
+    }
+]
