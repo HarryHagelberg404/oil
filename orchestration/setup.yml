@@ -7,6 +7,10 @@
     - vars.yml
 
   tasks:
+    - name: Set the timezone to CEST (Europe/Stockholm)
+      ansible.builtin.timezone:
+        name: "Europe/Stockholm"
+
     - name: Ensure git is installed
       ansible.builtin.package:
         name: git

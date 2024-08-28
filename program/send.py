@@ -172,10 +172,8 @@ def create_html_report(prices):
     html += """
         </table>
         <p>Data över bankdagar är hämtad från riksbanken, vilket betyder att det speglar den svenska marknaden.</p>
-        <br>
         <p>För nuvarande är valutaväxel-kursen hämtad från riksbanken men den anses inte vara pålitlig.</p>
-        <br>
-        <p>Datan för Platts HSFO 3,5 FOB Rotterdam Barges är hämtad från <a href="https://www.barchart.com/futures/quotes/JUV*0">Barchart</a> samt <a href="https://www.tradingview.com/symbols/NYMEX-UV1!/?contract=UVQ2024">Tradingview</a></p>
+        <p>Datan för Platts HSFO 3,5 % FOB Rotterdam Barges är hämtad från <a href="https://www.barchart.com/futures/quotes/JUV*0">Barchart</a> samt <a href="https://www.tradingview.com/symbols/NYMEX-UV1!/?contract=UVQ2024">Tradingview</a></p>
     </body>
     </html>
     """
@@ -211,10 +209,12 @@ def main():
             smtp_server = smtplib.SMTP_SSL("smtp.gmail.com", 465)
             smtp_server.login(username, password)
             to_email = to_email.split(",")
-            for email in to_email:
-                smtp_server.sendmail(from_email, email, msg.as_string())
+            smtp_server.sendmail(from_email, to_email, msg.as_string())
             smtp_server.quit()
             logging.info(f"Email successfully sent to {to_email}")
             logging.info(f"Email sent at time: {datetime.now()}")
         except Exception as e:
             logging.warning(f"Failed to send email. Error: {e}")
+
+
+main()
