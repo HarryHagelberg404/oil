@@ -3,4 +3,5 @@ data/daily_prices.json
 .venv
 .env
 orchestration/.ansible-venv
-orchestration/.hosts
+orchestration/hosts
+orchestration/ansible.cfg
