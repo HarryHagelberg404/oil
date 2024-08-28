@@ -1,2 +1,6 @@
+data/latest_oil_price.html
+data/daily_prices.json
 .venv
 .env
+orchestration/.ansible-venv
+orchestration/.hosts

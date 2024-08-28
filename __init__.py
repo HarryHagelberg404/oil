@@ -1,5 +1,5 @@
-import scrape
-import send
+import program.scrape as scrape
+import program.send as send
 
 
 def main():

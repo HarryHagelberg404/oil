@@ -1,25 +1,28 @@
 import json
 import smtplib
+import logging
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from datetime import datetime
+import scrape as scrape
 import os
 from dotenv import load_dotenv
 load_dotenv()
 
 
-def load_last_30_prices(json_file="daily_prices.json"):
+def update_last_30_prices(json_file="data/daily_prices.json"):
+    update_json_with_accumulated_mean_price("data/daily_prices.json")
+
+
+def load_last_30_prices(json_file="data/daily_prices.json"):
     with open(json_file, 'r') as file:
         prices = json.load(file)
 
-    # Sort the prices by date in ascending order
     prices.sort(key=lambda x: datetime.strptime(x['date'], "%Y-%m-%d"))
-
     # from 15 -14
     # Make calculations and add to prices var
     today_date = datetime.now().strftime("%Y-%m-%d")
     filtered_entries = filter_entries_by_date(prices, today_date)
-    update_json_with_accumulated_mean_price("daily_prices.json")
     return filtered_entries
 
 
@@ -73,7 +76,7 @@ def update_json_with_accumulated_mean_price(json_file_path):
     with open(json_file_path, 'w') as file:
         json.dump(updated_entries, file, indent=4)
 
-    print(f"Updated JSON file at {json_file_path} with accumulated mean prices.")
+    logging.info(f"Updated JSON file at {json_file_path} with accumulated mean prices.")
 
 
 def mean_currency(entries):
@@ -168,6 +171,11 @@ def create_html_report(prices):
 
     html += """
         </table>
+        <p>Data över bankdagar är hämtad från riksbanken, vilket betyder att det speglar den svenska marknaden.</p>
+        <br>
+        <p>För nuvarande är valutaväxel-kursen hämtad från riksbanken men den anses inte vara pålitlig.</p>
+        <br>
+        <p>Datan för Platts HSFO 3,5 FOB Rotterdam Barges är hämtad från <a href="https://www.barchart.com/futures/quotes/JUV*0">Barchart</a> samt <a href="https://www.tradingview.com/symbols/NYMEX-UV1!/?contract=UVQ2024">Tradingview</a></p>
     </body>
     </html>
     """
@@ -186,26 +194,27 @@ def construct_email(subject, body, to_email, from_email):
 
 
 def main():
-    last_30_prices = load_last_30_prices()
-    report_html = create_html_report(last_30_prices)
+    update_last_30_prices()
+    if scrape.is_swedish_bank_day():
 
-    subject = "Daily Oil Price Report"
-    username = os.getenv("USERNAME")
-    password = os.getenv("PASSWORD")
-    to_email = os.getenv("TO_EMAIL")
-    from_email = os.getenv("FROM_EMAIL")
+        last_30_prices = load_last_30_prices()
+        report_html = create_html_report(last_30_prices)
 
-    try:
-        msg = construct_email(subject, report_html, to_email, from_email)
-        smtp_server = smtplib.SMTP_SSL("smtp.gmail.com", 465)
-        smtp_server.login(username, password)
-        to_email = to_email.split(",")
-        for email in to_email:
-            smtp_server.sendmail(from_email, email, msg.as_string())
-        smtp_server.quit()
-        print(f"Email successfully sent to {to_email}")
-    except Exception as e:
-        print(f"Failed to send email. Error: {e}")
+        subject = "Daglig olje-rapport"
+        username = os.getenv("USERNAME")
+        password = os.getenv("PASSWORD")
+        to_email = os.getenv("TO_EMAIL")
+        from_email = os.getenv("FROM_EMAIL")
 
-
-main()
+        try:
+            msg = construct_email(subject, report_html, to_email, from_email)
+            smtp_server = smtplib.SMTP_SSL("smtp.gmail.com", 465)
+            smtp_server.login(username, password)
+            to_email = to_email.split(",")
+            for email in to_email:
+                smtp_server.sendmail(from_email, email, msg.as_string())
+            smtp_server.quit()
+            logging.info(f"Email successfully sent to {to_email}")
+            logging.info(f"Email sent at time: {datetime.now()}")
+        except Exception as e:
+            logging.warning(f"Failed to send email. Error: {e}")

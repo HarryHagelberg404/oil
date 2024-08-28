@@ -1,4 +1,5 @@
 import requests
+import logging
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
@@ -29,12 +30,12 @@ def download_html():
         html_content = driver.page_source
         with open(file_name, "w", encoding="utf-8") as file:
             file.write(html_content)
-        print(f"Downloaded {file_name} successfully!")
+        logging.info(f"Downloaded {file_name} successfully!")
 
     except requests.exceptions.Timeout:
-        print("The request timed out. Please try again later.")
+        logging.warning("The request timed out. Please try again later.")
     except requests.exceptions.RequestException as e:
-        print(f"An error occurred: {e}")
+        logging.warning(f"An error occurred: {e}")
 
 
 def extract_price_from_html(html_content):
@@ -43,7 +44,7 @@ def extract_price_from_html(html_content):
     # Find the specific div with the price information
     details_div = soup.find('div', class_='details-i4FV5Ith')
     if not details_div:
-        raise ValueError("Price information not found in the HTML content")
+        logging.warning("Price information not found in the HTML content")
 
     # Extract the text content from the div
     text_content = details_div.get_text()
@@ -51,7 +52,7 @@ def extract_price_from_html(html_content):
     # Use regex to extract the price
     match = re.search(r"current price of .*? is (\d+\.\d+)", text_content)
     if not match:
-        raise ValueError("Price not found in the text content")
+        logging.warning("Price not found in the text content")
 
     price = float(match.group(1))
     return price
@@ -71,12 +72,13 @@ def get_usd_to_sek_exchange_rate():
         data = response.json()
         return data["value"]
     else:
-        raise Exception("Failed to retrieve exchange rate.")
+        logging.warning("Failed to retrieve exchange rate.")
 
 
-def store_price_in_json(price, exchange_rate, json_file="daily_prices.json"):
+def store_price_in_json(price, exchange_rate, json_file="data/daily_prices.json"):
+    current_date = datetime.now().strftime("%Y-%m-%d")
     data = {
-        "date": datetime.now().strftime("%Y-%m-%d"),
+        "date": current_date,
         "price": price,
         "exchange_rate": exchange_rate
     }
@@ -87,6 +89,11 @@ def store_price_in_json(price, exchange_rate, json_file="daily_prices.json"):
     except FileNotFoundError:
         prices = []
 
+     # Check if there's already a record for the current date
+    if any(entry['date'] == current_date for entry in prices):
+        logging.info(f"Record for {current_date} already exists. No new entry added.")
+        return
+
     prices.append(data)
 
     with open(json_file, 'w') as file:
@@ -95,7 +102,7 @@ def store_price_in_json(price, exchange_rate, json_file="daily_prices.json"):
 
 def main():
     download_html()
-    with open("latest_oil_price.html", "r", encoding="utf-8") as file:
+    with open("data/latest_oil_price.html", "r", encoding="utf-8") as file:
         html_content = file.read()
 
     price = None
@@ -106,4 +113,5 @@ def main():
 
     store_price_in_json(price, exchange_rate)
 
-    print(f"Price {price} USD stored successfully.")
+    logging.info(f"Price {price} USD stored successfully.")
+    logging.info(f"Price is retrieved at time: {datetime.now()}")
