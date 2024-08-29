@@ -16,6 +16,8 @@ def download_html():
     file_name = os.path.join(os.getcwd(), "latest_oil_price.html")
     try:
         chrome_options = Options()
+        # Remove in development
+        chrome_options.binary_location = "/usr/local/bin/chromedriver"
         user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
         chrome_options.add_argument(f"user-agent={user_agent}")
         chrome_options.add_argument("--headless=new")
