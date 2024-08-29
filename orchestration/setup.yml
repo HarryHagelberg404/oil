@@ -70,9 +70,13 @@
     - name: Set up cron job 1
       ansible.builtin.cron:
         name: "Job 1: Run script1.py"
-        job: "{{ cron_job1 }}"
+        minute: "{{ cron_job1_minute }}"
+        hour: "{{ cron_job1_hour }}"
+        job: "{{ cron_job1_command }}"
 
     - name: Set up cron job 2
       ansible.builtin.cron:
         name: "Job 2: Run script2.py"
-        job: "{{ cron_job2 }}"
+        minute: "{{ cron_job2_minute }}"
+        hour: "{{ cron_job2_hour }}"
+        job: "{{ cron_job2_command }}"
