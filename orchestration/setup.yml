@@ -16,11 +16,16 @@
         name: git
         state: present
 
+    - name: Ensure unzip is installed
+      ansible.builtin.package:
+        name: unzip
+        state: present
+
     - name: Clone the Git repository
       ansible.builtin.git:
         repo: "{{ repo_url }}"
         dest: "{{ repo_dest }}"
-        version: master
+        version: main
         force: yes
 
     - name: Ensure Python3 and virtualenv are installed
@@ -35,12 +40,10 @@
         cmd: python3 -m venv "{{ venv_path }}"
         creates: "{{ venv_path }}/bin/activate"
 
-    - name: Install Python packages from requirements.txt
-      ansible.builtin.command:
-        cmd: "{{ venv_path }}/bin/pip install -r {{ requirements_file }}"
-        args:
-          chdir: "{{ repo_dest }}"
-        when: requirements_file is file
+    - name: Install Python packages from requirements file
+      ansible.builtin.pip:
+        requirements: "{{ repo_dest }}/requirements.txt"
+        virtualenv: "{{ venv_path }}"
 
     - name: Download Chromedriver
       ansible.builtin.get_url:
@@ -67,13 +70,9 @@
     - name: Set up cron job 1
       ansible.builtin.cron:
         name: "Job 1: Run script1.py"
-        minute: "0"
-        hour: "0"
         job: "{{ cron_job1 }}"
 
     - name: Set up cron job 2
       ansible.builtin.cron:
         name: "Job 2: Run script2.py"
-        minute: "0"
-        hour: "12"
         job: "{{ cron_job2 }}"
