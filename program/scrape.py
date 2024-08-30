@@ -29,6 +29,7 @@ def download_html():
         driver = webdriver.Chrome(service=service, options=chrome_options)
 
         driver.get(url)
+        driver.quit()
 
         html_content = driver.page_source
         with open(file_name, "w", encoding="utf-8") as file:

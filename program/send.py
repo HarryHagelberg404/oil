@@ -215,6 +215,3 @@ def main():
             logging.info(f"Email sent at time: {datetime.now()}")
         except Exception as e:
             logging.warning(f"Failed to send email. Error: {e}")
-
-
-main()
