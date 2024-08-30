@@ -4,7 +4,7 @@ import logging
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from datetime import datetime
-import scrape as scrape
+import program.scrape as scrape
 import os
 from dotenv import load_dotenv
 load_dotenv()
@@ -172,7 +172,7 @@ def create_html_report(prices):
     html += """
         </table>
         <p>Data över bankdagar är hämtad från riksbanken, vilket betyder att det speglar den svenska marknaden.</p>
-        <p>För nuvarande är valutaväxel-kursen hämtad från riksbanken men den anses inte vara pålitlig.</p>
+        <p>Efter flertalet stickprov anses Riksbankens API vara pålitlig källa. Vänligen dubbelkolla på Europeeiska centralbanken</p>
         <p>Datan för Platts HSFO 3,5 % FOB Rotterdam Barges är hämtad från <a href="https://www.barchart.com/futures/quotes/JUV*0">Barchart</a> samt <a href="https://www.tradingview.com/symbols/NYMEX-UV1!/?contract=UVQ2024">Tradingview</a></p>
     </body>
     </html>
