@@ -64,7 +64,7 @@
 
     - name: Move Chromedriver to destination
       ansible.builtin.command:
-        cmd: mv /tmp/chromedriver "{{ chromedriver_dest }}"
+        cmd: mv /tmp/chrome-linux64/chrome "{{ chromedriver_dest }}"
 
     - name: Ensure Chromedriver is executable
       ansible.builtin.file:
