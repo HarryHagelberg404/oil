@@ -9,6 +9,7 @@ import os
 import json
 import re
 from bs4 import BeautifulSoup
+logging.basicConfig(filename='/home/oil/cron.log', level=logging.WARNING)
 
 
 def download_html():
@@ -29,13 +30,12 @@ def download_html():
         driver = webdriver.Chrome(service=service, options=chrome_options)
 
         driver.get(url)
-        driver.quit()
 
         html_content = driver.page_source
         with open(file_name, "w", encoding="utf-8") as file:
             file.write(html_content)
         logging.info(f"Downloaded {file_name} successfully!")
-
+        driver.quit()
     except requests.exceptions.Timeout:
         logging.warning("The request timed out. Please try again later.")
     except requests.exceptions.RequestException as e:
