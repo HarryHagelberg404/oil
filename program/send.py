@@ -108,12 +108,12 @@ def mean_price(entries):
 def latest_closing_price(entries):
     if not entries:
         return None  # Return None if the list is empty
-
-    last_entry = entries[-1]  # Get the last entry
-    price = last_entry.get("accumulated_mean_price", None)  # Get the price, return None if not found
-
-    return price if isinstance(price, (int, float)) and price != "" else None
-
+    
+    for entry in reversed(entries):
+        price = entry.get("accumulated_mean_price", None)
+        if isinstance(price, (int, float)) and price != "":
+            return price
+        
 
 def create_html_report(prices):
     m_currency = mean_currency(prices)
